@@ -62,5 +62,5 @@ This is of a juvenile sea lamprey that attached itself to our viewing window. It
 
 Feel free to connect with me on LinkedIn, if you so desire. [Here's a link to my profile.](https://www.linkedin.com/in/kelsey-tichenor/)
 
-**Thanks again for stopping by!**
+:green_heart::purple_heart: **Thanks again for stopping by!** :purple_heart::green_heart:
 
