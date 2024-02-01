@@ -58,3 +58,9 @@ This is of a juvenile sea lamprey that attached itself to our viewing window. It
 * The only time I left the U.S. was on a road trip to Canada with my mom, back before they required Americans to have passports to get in. We went up I-95 North until we hit the border, then kept going. We ended up somewhere in the middle-of-nowhere of Quebec. It was November, so there was nothing but miles and miles of snowy plains and silos.
   * I really hope that's not the last time I leave the U.S., there are still so many places I want to see! Ireland (or anywhere in the U.K., really) and Japan are at the top of my list.
 
+## **Let's stay in touch!**
+
+Feel free to connect with me on LinkedIn, if you so desire. [Here's a link to my profile.](https://www.linkedin.com/in/kelsey-tichenor/)
+
+**Thanks again for stopping by!**
+
