@@ -1,4 +1,4 @@
-# Thanks for stopping by! I'm Kelsey.
+# :smile_cat: Thanks for stopping by! I'm Kelsey :smile_cat:
 
 <p align="center">
   <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Yours%20Truly.jpg?raw=true">
