@@ -52,11 +52,23 @@ This is of a juvenile sea lamprey that attached itself to our viewing window. It
 
 * I'm an equal opportunity tea enjoyer, but I'm a sucker for a good cuppa English (or Irish) breakfast, or Earl Grey :tea:
 * I got out of the restaurant biz just in time; I still enjoy the heck out of cooking on my time off, especially when it comes to trying new techniques I haven't tried before.
+  * Homemade broccoli cheddar soup wasn't the most complex thing I've ever made, but this is the best photo my Wal-Mart phone would allow.
+
+<p align="center">
+  <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Broccoli%20Cheddar%20Soup.jpg?raw=true">
+</p>
+
 * I enjoy sci-fi and fantasy literature. Two of my favorite authors are Tolkien and Brandon Sanderson.
 * I also enjoy video games, as well as Dungeons and Dragons. 
   * (Okay, I'm a nerd. Busted. :space_invader:)
 * The only time I left the U.S. was on a road trip to Canada with my mom, back before they required Americans to have passports to get in. We went up I-95 North until we hit the border, then kept going. We ended up somewhere in the middle-of-nowhere of Quebec. It was November, so there was nothing but miles and miles of snowy plains and silos.
   * I really hope that's not the last time I leave the U.S., there are still so many places I want to see! Ireland (or anywhere in the U.K., really) and Japan are at the top of my list.
+* And what kind of environmental science student would I be if I didn't like hiking? There's all sorts of cool stuff to see outside:
+
+<p align="center">
+  <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Chicken%20of%20the%20Woods%20I%20think.jpg?raw=true" hspace="10">
+  <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Pokeweed.jpg?raw=true">
+</p>
 
 ## **Let's stay in touch!**
 
