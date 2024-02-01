@@ -45,7 +45,7 @@ This is of a juvenile sea lamprey that attached itself to our viewing window. It
 * I have three cats. (Or do three cats have me?) From left to right, their names are Two, Tali, and Midna, who is also called Beans.
 
 <p align="center">
-  <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Two.jpg?raw=true" hspace="10">
+  <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Two_2.jpg?raw=true" hspace="10">
   <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Tali_2.jpg?raw=true" hspace="10">
   <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Midna.jpg?raw=true">
 </p>
