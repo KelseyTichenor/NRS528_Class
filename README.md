@@ -3,7 +3,6 @@
 <p align="center">
   <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Yours%20Truly.jpg?raw=true">
 </p>
-
 ## **About Me:**
 
 * I study environmental science and management at URI. I'm a senior with less than one year 'til graduation :smile:
