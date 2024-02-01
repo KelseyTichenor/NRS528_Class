@@ -12,7 +12,7 @@
 
 ## **"So what do you wanna do once you get out?"**
 
-* In a perfect world, I'd find a way to marry my two greatest interests related to the natural world: aquatic ecology and emerging pollutant remediation (specifically microplastics and / or PFAS)
+* In a perfect world, I'd find a way to marry my two greatest interests related to the natural world: aquatic ecology and emerging pollutant remediation (specifically microplastics and/or PFAS)
 * This ain't a perfect world though, so I'd be happy getting my feet wet doing anything even remotely related to one of the two.
 
 ## **Here's some highlights from one of my favorite internships to date**
@@ -23,4 +23,11 @@ These were all taken when I interned at the Hadley Falls Fishway in Holyoke, MA.
   <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Shortnose%20Sturgeon.jpg?raw=true" hspace="10">
   <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Shortnose%20Sturgeon%202.jpg?raw=true">
 </p>
+
+And this is of a juvenile sea lamprey that attached itself to our viewing window. It remains one of my favorite pictures to this day.
+
+<p align="center">
+  <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Juvenile%20Sea%20Lamprey.jpg?raw=true">
+</p>
+
 
