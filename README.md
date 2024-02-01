@@ -63,7 +63,7 @@ This is of a juvenile sea lamprey that attached itself to our viewing window. It
   * (Okay, I'm a nerd. Busted. :space_invader:)
 * The only time I left the U.S. was on a road trip to Canada with my mom, back before they required Americans to have passports to get in. We went up I-95 North until we hit the border, then kept going. We ended up somewhere in the middle-of-nowhere of Quebec. It was November, so there was nothing but miles and miles of snowy plains and silos.
   * I really hope that's not the last time I leave the U.S., there are still so many places I want to see! Ireland (or anywhere in the U.K., really) and Japan are at the top of my list.
-* And what kind of environmental science student would I be if I didn't like hiking? There's all sorts of cool stuff to see outside:
+* And what kind of environmental science student would I be if I didn't like hiking? There's all sorts of cool stuff to see outside, like mushroom clusters (left) and pokeweed (right) - not that I'd suggest eating either of them...
 
 <p align="center">
   <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/Chicken%20of%20the%20Woods%20I%20think.jpg?raw=true" hspace="10">
