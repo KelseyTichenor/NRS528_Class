@@ -18,7 +18,7 @@ def numbers_less_than_5(variable):
 
 filtered_numbers = filter(numbers_less_than_5, Item_1_List)
 
-print(list(filtered_numbers))
+print("First filtered list: " + str(list(filtered_numbers)))
 
 #######
 
@@ -47,7 +47,7 @@ print(list(filtered_numbers))
 # Do the same thing as Part 1, but do it all in one line of code. O_O
 
 filtered_numbers = filter(lambda variable: variable < 5, Item_1_List)
-print(list(filtered_numbers))
+print("Same result, but with one line of code: " + str(list(filtered_numbers)))
 
 #######
 

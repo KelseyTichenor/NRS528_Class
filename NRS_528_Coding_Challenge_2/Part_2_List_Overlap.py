@@ -12,7 +12,7 @@
 list_a = ['dog', 'cat', 'rabbit', 'hamster', 'gerbil']
 list_b = ['dog', 'hamster', 'snake']
 intersection = set(list_a) & set(list_b)
-print(intersection)
+print("Overlapping Words: " + str(intersection))
 
 
 #######
@@ -30,7 +30,8 @@ def symmetric_difference(list_a, list_b):
     return list(set(list_a) - set(list_b)) and list(set(list_b) - set(list_a))
 
 
-print((symmetric_difference(list_a, list_b)), (symmetric_difference(list_b, list_a)))
+print("Non-Overlapping Words:" + str(((symmetric_difference(list_a, list_b)),
+                                      (symmetric_difference(list_b, list_a)))))
 
 #######
 
