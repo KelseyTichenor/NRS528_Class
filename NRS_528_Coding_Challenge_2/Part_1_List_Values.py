@@ -11,10 +11,8 @@
 
 Item_1_List = [1, 2, 3, 6, 8, 12, 20, 32, 46, 85]
 
-
 def numbers_less_than_5(variable):
     return variable < 5
-
 
 filtered_numbers = filter(numbers_less_than_5, Item_1_List)
 
