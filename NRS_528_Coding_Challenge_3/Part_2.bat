@@ -1,2 +1,2 @@
-"C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe" Part_2_Push_SysArgv_To_The_Limit.py Peppers Onions Mushrooms
+"C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe" C:\Users\ektic\OneDrive\Documents\Schoolwork\NRS_528\NRS_528_Coding_Challenge_3\Part_2_Push_SysArgv_To_The_Limit.py ThisIsAnArgument Hamster Coffee
 pause
