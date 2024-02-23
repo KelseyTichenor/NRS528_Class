@@ -29,19 +29,20 @@ for year in years:
             if row_year == year:
                 co2values.append(float(row[1]))
     print(str(year) + ": " + str(sum(co2values)/len(co2values)))
-#
-# # 2. Minimum, maximum and average for the entire dataset.
+
+# 2. Minimum, maximum and average for the entire dataset.
 print(str("The min for this dataset is " + str(min(entire_co2_dataset))))
 print(str("The max for this dataset is " + str(max(entire_co2_dataset))))
 print(str("The mean for this dataset is " + str(sum(entire_co2_dataset)/len(entire_co2_dataset))))
 
-# # 3. Seasonal average of:
-# #       Spring (March, April, May),
-# #       Summer (June, July, August) (this month = june + july + august),
-# #       Autumn (September, October, November)
-# #       and Winter (December, January, February).
-# # 4. Calculate the anomaly for each value in the dataset (average minus value)
-# #       relative to the mean for the entire time series.
+# 3. Seasonal average of:
+#       Spring (March, April, May),
+#       Summer (June, July, August) (summer = june + july + august),
+#       Autumn (September, October, November)
+#       and Winter (December, January, February).
+
+# 4. Calculate the anomaly for each value in the dataset (average minus value)
+#       relative to the mean for the entire time series.
 #
 # #######
 # Notes:
