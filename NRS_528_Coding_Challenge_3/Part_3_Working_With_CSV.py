@@ -4,7 +4,7 @@
 # from quasi-continuous daily measurements at Mauna Loa, Hawaii dataset,
 # Use Python (csv) calculate the following:
 
-# 1. Annual average for each year in the dataset.
+# But first: time for some reference and general loop set-up:
 
 import csv
 
@@ -81,7 +81,9 @@ with open("co2-ppm-daily.csv") as co2csv:
     print(len(autumnCo2))
     print(len(winterCo2))
 
-# 1. Annual average
+# Now that that's done, calculate the following:
+
+# 1. Annual average for each year in the dataset.
 for year in years:
     co2values = []
     with open("co2-ppm-daily.csv") as co2csv:
@@ -107,11 +109,28 @@ print(str("Average Summer CO2: " + str(sum(summerCo2)/len(summerCo2))))
 print(str("Average Autumn CO2: " + str(sum(autumnCo2)/len(autumnCo2))))
 print(str("Average Winter CO2: " + str(sum(winterCo2)/len(winterCo2))))
 
-# 4. Calculate the anomaly for each value in the dataset (average minus value)
+# 4. Calculate the anomaly for each value in the dataset
+#       (average minus value, from what I think I heard in class?)
 #       relative to the mean for the entire time series.
 
+# Calculating the anomalies for all 16,000+ values in the dataset creates a very long loop.
+# That's why I'm leaving this step commented out for now.
+# What's the right way to do this?
 
-# #######
+# anomalies = []
+# data_mean = (str(sum(entire_co2_dataset)/len(entire_co2_dataset)))
+# print("The mean for the entire dataset is: " + data_mean)
+# for value in entire_co2_dataset:
+#     anomaly = (int(float(data_mean)) - int(float(value)))
+#     anomalies.append(anomaly)
+#     print(anomalies)
+
+#######
 # Notes:
-# Set up the dataset the right way before attempting to answer any questions.
+# Set up the dataset references the right way before attempting to answer any questions.
 # It's important to know how the CSV should work before trying to code with it
+# Step 3: Maybe there's a more efficient way to set this up?
+#         The if/elif statements seemed to work just fine though.
+# Step 4: started off trying to use (int(data_mean)) but since the numbers in there
+#   are all floats, I couldn't do this without getting an error.
+#   found that solution on Stack Overflow.
