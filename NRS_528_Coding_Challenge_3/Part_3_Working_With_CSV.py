@@ -113,7 +113,7 @@ print(str("Average Winter CO2: " + str(sum(winterCo2)/len(winterCo2))))
 #       (average minus value, from what I think I heard in class?)
 #       relative to the mean for the entire time series.
 
-# Calculating the anomalies for all 16,000+ values in the dataset creates a very long loop.
+# Calculating the anomalies for all 18,764 values in the dataset creates a very long loop.
 # That's why I'm leaving this step commented out for now.
 # What's the right way to do this?
 
