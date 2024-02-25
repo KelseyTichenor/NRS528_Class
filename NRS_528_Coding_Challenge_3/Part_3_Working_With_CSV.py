@@ -117,13 +117,19 @@ print(str("Average Winter CO2: " + str(sum(winterCo2)/len(winterCo2))))
 # That's why I'm leaving this step commented out for now.
 # What's the right way to do this?
 
-# anomalies = []
-# data_mean = (str(sum(entire_co2_dataset)/len(entire_co2_dataset)))
-# print("The mean for the entire dataset is: " + data_mean)
+anomalies = []
+data_mean = (str(sum(entire_co2_dataset)/len(entire_co2_dataset)))
+print("The mean for the entire dataset is: " + data_mean)
 # for value in entire_co2_dataset:
 #     anomaly = (int(float(data_mean)) - int(float(value)))
 #     anomalies.append(anomaly)
 #     print(anomalies)
+
+with open("co2-ppm-daily.csv") as co2csv:
+    next(co2csv)
+    for row in csv.reader(co2csv, delimiter=','):
+        anomaly = (float(row[1]) - float(data_mean))
+        print(row[0] + ": " + str(anomaly))
 
 #######
 # Notes:
