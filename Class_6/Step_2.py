@@ -15,17 +15,24 @@
 # you will need to composite all the band images (ending in Bn.tif (where n = band number), do not add the BQA.tif
 # file. See Landsat 8 band reference -
 # https://www.usgs.gov/faqs/what-are-best-landsat-spectral-bands-use-my-research?qt-news_science_products=0#qt-news_science_products
-
+# import arcpy
+# arcpy.management.CompositeBands(
+#     in_rasters=r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B1.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B2.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B3.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B4.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B5.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B6.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B7.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B8.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B9.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B10.tif;"
+#                r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Winter_2013\LC08_L1TP_012031_20131212_20170307_01_T1_B11.tif",
+#     out_raster=r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\winter_2013_2.tif")
 # Once the tool has successfully completed, go into the Geoprocessing "History" window, right click on the
 # Completed tool, select "Copy as Python Snippet" and paste the tool output below:
 
 import arcpy, os
-
-
-
-
-
-
 
 # Task 2 -  Now it is relatively easy to copy this and change the file name in order to run it on the Winter_2014 data
 # but we are not going to do that, instead, we can going to use Python to do this for us from a directory name. Below,
@@ -59,11 +66,33 @@ import arcpy, os
 # data. Hint: use the list and starter code I have provided, and consider using a for loop to run through each year of data
 # complete the composite bands tool for each one, and go from there.
 
+# Step 1: Set up workspace / base path directory using your file location and make sure it works,
+# Then set up ListRasters, first and foremost.
 import os, arcpy
 listYears = ["2013", "2014", "2015", "2016", "2017", "2018", "2019"]
-outputDirectory = r"C:\Data\Course_ArcGIS_Python\Classes\06_Cheating\DataFolder_Step_2_data_lfs\Test"
-if not os.path.exists(outputDirectory):
-    os.mkdir(outputDirectory)
+
+base_path_directory = "E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data"
+arcpy.env.workspace = base_path_directory
+
+# print(list_of_bands)
+for year in listYears:
+    arcpy.env.workspace = os.path.join(base_path_directory, "Winter_" + year)
+    list_of_bands = arcpy.ListRasters()
+    list_of_bands = list_of_bands[:-1]
+    print(list_of_bands)
+    b10name = list_of_bands[1]
+    print b10name
+    # list_of_bands = list_of_bands.append(b10name)
+    # print(list_of_bands)
+# rasters = arcpy.ListRasters("base_path_directory", "TIF")
+# print(rasters)
+# for raster in rasters:
+#     print(raster)
+# outputDirectory = r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_6\Step_2_data\Test"
+# if not os.path.exists(outputDirectory):
+#     os.mkdir(outputDirectory)
+# print(outputDirectory)
+
 
 # Consider what you want to do before you start. 1) for loop through listYears, 2) set your workspace to the correct
 # year, 3) arcpy.ListRasters, 4) remove BQA.tif, 5) composite bands into a known location.
