@@ -44,7 +44,7 @@ import arcpy
 # reference is the same as above, i.e. WGS 1984.
 
 ##### 1. Convert the file to a shapefile.
-arcpy.env.workspace = r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_5\Step_1_Deep_Coral.csv"
+arcpy.env.workspace = r"C:\GitHub\NRS528_Class\Class_5\Step_1_Deep_Coral.csv"
 arcpy.env.overwriteOutput = True
 
 
@@ -55,7 +55,7 @@ y_coords = "decimalLatitude"
 # At first, I transposed latitude and longitude - are they supposed to be backwards in this situation?
 z_coords = ""
 out_Layer = "Deep Coral"
-saved_Layer = r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_5\Step_1_Deep_Coral_Output.shp"
+saved_Layer = r"C:\GitHub\NRS528_Class\Class_5\Step_1_Deep_Coral_Output.shp"
 
 # Set the spatial reference
 spRef = arcpy.SpatialReference(4326)  # 4326 == WGS 1984
@@ -75,8 +75,9 @@ print("There are " + str(arcpy.GetCount_management(lyr)) + " rows in this CSV.")
 
 ##### 3. Check the correct coordinate system has been applied (Hint: see last week - describe tool!)
 
-desc = arcpy.Describe(r"E:\Kelsey_Tichenor_NRS_528\GitHub\NRS528_Class\Class_5\Step_1_Deep_Coral_Output.shp")
+desc = arcpy.Describe(r"C:\GitHub\NRS528_Class\Class_5\Step_1_Deep_Coral_Output.shp")
 print(desc.spatialReference.name)
+print("Extent:\n XMin: {0},\n XMax: {1},\n YMin: {2},\n YMax: {3}".format(desc.extent.XMin, desc.extent.XMax, desc.extent.YMin, desc.extent.YMax))
 
 ##### 4. Visualize the file in ArcPro by dragging it into the program.
 # DONE :D
