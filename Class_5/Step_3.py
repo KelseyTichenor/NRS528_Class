@@ -46,7 +46,8 @@ print("Extent:\n  XMin: {0},\n XMax: {1},\n YMin: {2},\n YMax: {3}".format(desc.
 # the Fishnet, you must present it as: "-176.87 -41", note the space inbetween, and the fact that the
 # entire thing is a string. Hint use: cellSizes of 0.25 degrees.
 
-print(desc.origin_coord)
+
+print("Extent:\n  YMin: {0},\n YMax: {1}".format(desc_image.extent.YMin, desc_image.extent.YMax))
 
 # originCoordinate = "-176.87 -51"  # Left bottom of our point data
 # yAxisCoordinate = "-176.87 -41"  # This sets just the orientation of the y-axis, so we head 10 degrees perfectly north
