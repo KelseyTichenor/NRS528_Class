@@ -25,14 +25,18 @@
 #           I presume leaving nothing inside the brackets is the same as '0'.
 # Step 5: Execute the Function and hope for the best
 
+import os
 import arcpy
-arcpy.env.workspace = r"C:\GitHub\NRS528_Class\NRS_528_Coding_Challenge_4"
-arcpy.env.scratchWorkspace = r"C:\GitHub\NRS528_Class\NRS_528_Coding_Challenge_4"
+Base_Path = "C:/GitHub/NRS528_Class/NRS_528_Coding_Challenge_4"
+arcpy.env.workspace = Base_Path
+arcpy.env.scratchWorkspace = Base_Path
 arcpy.AddMessage("The passed-down current workspace is: %s" % arcpy.env.workspace)
 arcpy.AddMessage("The passed-down scratch workspace is: %s" % arcpy.env.scratchWorkspace)
+
 try:
-    in_features = r"C:\GitHub\NRS528_Class\NRS_528_Coding_Challenge_4\Leaking_Underground_Storage_Tanks\Leaking_Underground_Storage_Tanks.shp"
-    near_features = r"C:\GitHub\NRS528_Class\NRS_528_Coding_Challenge_4\Wetlands_2020\Wetlands_2020.shp"
+    in_features = os.path.join(Base_Path,
+                               "Leaking_Underground_Storage_Tanks", "Leaking_Underground_Storage_Tanks.shp")
+    near_features = os.path.join(Base_Path, "Wetlands_2020", "Wetlands_2020.shp")
     search_radius = "100 Meters"
     location = "#"
     angle = "#"
