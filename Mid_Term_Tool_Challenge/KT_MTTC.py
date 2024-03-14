@@ -45,7 +45,6 @@ arcpy.env.overwriteOutput = True
 
 Rivers = os.path.join(Base_Path, "Rivers", "Rivers.shp")
 towns = os.path.join(Base_Path, "Towns", "Towns.shp")
-NLCD_2016_img = os.path.join(Base_Path, "NLCD_2016", "NLCD_2016.img")
 
 # Make Temporary Folder
 if not os.path.exists(os.path.join(Base_Path, "Temporary_Files")):
