@@ -4,6 +4,16 @@
 # 1. Code must be commented well.
 # 2. Code must be able to run on any machine, changing only a base folder location.
 
+################################
+
+# UPDATE! Coding Challenge 8: Convert this code into a function
+# Requirements:
+# 1. You must do more than one thing to your input to the function
+# 2. The function must take two arguments or more
+# 3. Provide a zip file of your example data within your repo
+
+################################
+
 # I saw there was a dataset for leaking storage tanks,
 #   as well as a dataset for the 2020 wetlands inventory.
 # Both datasets came from RIGIS.
@@ -27,29 +37,49 @@
 
 import os
 import arcpy
-Base_Path = "C:/GitHub/NRS528_Class/NRS_528_Coding_Challenge_4"
-arcpy.env.workspace = Base_Path
-arcpy.env.scratchWorkspace = Base_Path
-arcpy.AddMessage("The passed-down current workspace is: %s" % arcpy.env.workspace)
-arcpy.AddMessage("The passed-down scratch workspace is: %s" % arcpy.env.scratchWorkspace)
+# Base_Path = "C:/GitHub/NRS528_Class/NRS_528_Coding_Challenge_4"
+# arcpy.env.workspace = Base_Path
+# arcpy.env.scratchWorkspace = Base_Path
+# arcpy.AddMessage("The passed-down current workspace is: %s" % arcpy.env.workspace)
+# arcpy.AddMessage("The passed-down scratch workspace is: %s" % arcpy.env.scratchWorkspace)
+def describe_wetlands(input_shapefile):
+    desc = arcpy.Describe(input_shapefile)
+    print("Describing: " + str(input_shapefile))
+    if arcpy.Exists(input_shapefile):
+        if desc.dataType == "ShapeFile":
+            print("Feature Type:  " + desc.shapeType)
+            print("Coordinate System Type:  " + desc.spatialReference.type)
+            print("Coordinate System used:  " + desc.spatialReference.GCSName)
+        else:
+            print("Input data not ShapeFile..")
+    else:
+        print("Dataset not found, please check the file path..")
 
-try:
-    in_features = os.path.join(Base_Path,
-                               "Leaking_Underground_Storage_Tanks", "Leaking_Underground_Storage_Tanks.shp")
-    near_features = os.path.join(Base_Path, "Wetlands_2020", "Wetlands_2020.shp")
-    search_radius = "100 Meters"
-    location = "#"
-    angle = "#"
-    method = "GEODESIC"
-    arcpy.Near_analysis(in_features, near_features, search_radius, location, angle, method)
-    # time to get geoprocessing messages:
-    print(arcpy.GetMessages())
+input_shapefile = r"C:\Data\Course_ArcGIS_Python\Classes\08_Functions\DataFolder_Step_5_Data\Places.shp"
+describe_shp(input_shapefile)
 
-except arcpy.ExecuteError:
-    print(arcpy.GetMessages(2))
+# Commented-Out Coding Challenge 4 Code for reference:
 
-except Exception as err:
-    print(err.args[0])
-
-# Notes:
-# try/except loops seem to fill the same function as if/elif/else loops.
+# Base_Path = "C:/GitHub/NRS528_Class/NRS_528_Coding_Challenge_4"
+# arcpy.env.workspace = Base_Path
+# arcpy.env.scratchWorkspace = Base_Path
+# arcpy.AddMessage("The passed-down current workspace is: %s" % arcpy.env.workspace)
+# arcpy.AddMessage("The passed-down scratch workspace is: %s" % arcpy.env.scratchWorkspace)
+#
+# try:
+#     in_features = os.path.join(Base_Path,
+#                                "Leaking_Underground_Storage_Tanks", "Leaking_Underground_Storage_Tanks.shp")
+#     near_features = os.path.join(Base_Path, "Wetlands_2020", "Wetlands_2020.shp")
+#     search_radius = "100 Meters"
+#     location = "#"
+#     angle = "#"
+#     method = "GEODESIC"
+#     arcpy.Near_analysis(in_features, near_features, search_radius, location, angle, method)
+#     # time to get geoprocessing messages:
+#     print(arcpy.GetMessages())
+#
+# except arcpy.ExecuteError:
+#     print(arcpy.GetMessages(2))
+#
+# except Exception as err:
+#     print(err.args[0])

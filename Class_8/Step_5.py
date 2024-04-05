@@ -7,6 +7,8 @@
 # a series of variables, you'd have to code the arcpy.Describe output several times. It's far easier to code a
 # single function and from there, we can send a dataset to it multiple times:
 
+# The code block below is apparently super useful and can be copied to a variety of different applications.
+
 import arcpy
 
 # def describe_shp(input_shapefile):
