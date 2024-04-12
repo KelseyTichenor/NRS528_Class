@@ -9,11 +9,11 @@
 
 import arcpy
 
-input_shp = r'H:\NRS528_2024\1_Class_Files\Classes\09_Cursors\Step_2_Data\Places.shp'
+input_shp = r'C:\GitHub\NRS528_Class\Class_9\Step_2_Data\Places.shp'
 fields = ['code', 'population', 'name', 'SHAPE@XY']
 
-expression = """"population" > 30000"""  # The formatting of an expression is a bit messy...
-expression = arcpy.AddFieldDelimiters(input_shp, "population") + " > 30000"  # Cleaner and easier to code
+expression = """"population" > 2000"""  # The formatting of an expression is a bit messy...
+expression = arcpy.AddFieldDelimiters(input_shp, "population") + " > 2000"  # Cleaner and easier to code
 
 with arcpy.da.SearchCursor(input_shp, fields, expression) as cursor:
     for row in cursor:

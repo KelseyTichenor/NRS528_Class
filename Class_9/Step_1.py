@@ -75,6 +75,8 @@ import arcpy
 # Step 1: create an empty list to append stuff to
 crane_list = []
 crane_count = {}
+# Remember - a list is a linear structure that's good for simple data and ordered collections of items,
+# and a dictionary is used for larger datasets having key:value pairs(I think?)
 with arcpy.da.SearchCursor("Step_1.csv", ['Crane', 'Time', 'X', 'Y']) as cursor:
     for row in cursor:
         if row[0] not in crane_list:
