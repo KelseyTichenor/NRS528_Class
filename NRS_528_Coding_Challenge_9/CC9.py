@@ -25,26 +25,25 @@ fields = ['Site', 'Species', 'Other']
 unique_species = []
 desc = arcpy.Describe(input_shp)
 
-expression = arcpy.AddFieldDelimiters(input_shp, 'Other') + " = PHOTO" or ' = Photo' or ' = Photos'
 
 # Part 1: Counting how many individual records have photos, and how many do not
-with arcpy.da.SearchCursor(input_shp, fields) as cursor:
+expressionNone = arcpy.AddFieldDelimiters(input_shp, 'Other') + "NOT LIKE 'PHOTO'"
+with arcpy.da.SearchCursor(input_shp, fields, expressionNone) as cursorN:
     count_1 = 0
-    for row in cursor:
-        # print(u'{0}, {1}, {2}'.format(row[0], row[1], row[2]))
+    for row in cursorN:
         count_1 = count_1 + 1
-# Printing the first number
-print("No expression: " + str(count_1))
+# Printing the number of records without photos
+print("Number of records without photos: " + str(count_1))
 
-with arcpy.da.SearchCursor(input_shp, fields, expression) as cursor:
-    count_1 = 0
+expressionPhotos = arcpy.AddFieldDelimiters(input_shp, 'Other') + " = PHOTO"
+with arcpy.da.SearchCursor(input_shp, fields, expressionPhotos) as cursor:
+    count_2 = 0
     for row in cursor:
-        # print(u'{0}, {1}, {2}'.format(row[0], row[1], row[2]))
-        count_1 = count_1 + 1
-# Printing the second number
-print("Expression: " + str(count_1))
+        count_2 = count_2 + 1
+# Printing the number of records with photos
+print("Number of records with photos: " + str(count_2))
 
-
+#######
 
 # Part 2: Counting the number of unique species in the dataset
 with arcpy.da.SearchCursor(input_shp, fields) as cursor:
@@ -54,9 +53,9 @@ with arcpy.da.SearchCursor(input_shp, fields) as cursor:
 # Row 1 refers to row 1 in the cursor (which is the Species column in the dataset)
 # Printing the result, but not without making sure the code works, using another print statement
 print(unique_species)
-print("Number of unique species = " + str(len(unique_species)))
+print("Number of unique species: " + str(len(unique_species)))
 
-
+#######
 
 # Part 3: Generating two shapefiles: one with photos and one without
 #
@@ -108,19 +107,29 @@ arcpy.CreateFeatureclass_management(out_path, out_name, geometry_type, template,
 print("Shapefile without photos created")
 
 # Now we have the blank shapefiles we need. Let's add the photo data to them using the arcpy.da.InsertCursor function.
-# Might be stealing some code from
-#       https://community.esri.com/t5/geoprocessing-questions/converting-contours-to-points/td-p/521512#449508
-#       and the concept of how to use it from:
-#       https://community.esri.com/t5/python-questions/use-insertcursor-to-copy-geometry-from-one-dataset/td-p/84671
 
-input_shp_photos = os.path.join(basePath, "Invasives_Data_With_Photos", "Invasives_With_Photos.shp")
+# Invasive Species With Photos
+OutputFeatureP = os.path.join(basePath, "Invasives_Data_With_Photos", "Invasives_With_Photos.shp")
+cur = arcpy.InsertCursor(OutputFeatureP)
+feat = cur.newRow()
 fields = ['Site', 'Species', 'Other']
-expression = arcpy.AddFieldDelimiters(input_shp, 'Other') + " = PHOTO" or ' = Photo' or ' = Photos'
-with arcpy.da.InsertCursor(input_shp_photos, fields, expression) as out_cursor:
-    with arcpy.da.SearchCursor(input_shp_photos, fields, expression) as in_cursor:
-        for row in in_cursor:
-            if row[1] not in out_cursor:
-                out_cursor.insertRow(row)
+expressionP = arcpy.AddFieldDelimiters(input_shp, 'Other') + " = PHOTO "
+with arcpy.da.InsertCursor(OutputFeatureP, fields, expressionP) as p_out_cursor:
+    with arcpy.da.SearchCursor(input_shp, fields, expressionP) as p_in_cursor:
+        # Yes, I'm referencing the original RIGIS forest data from the beginning of the file
+        for row in p_in_cursor:
+            cur.insertRow(feat)
 print("Hope this works!")
-# Spoiler alert: this code doesn't work at all - I didn't think I needed to use the trig stuff here
-#       because this is meant to be a point feature class, but should I be using the trig stuff?
+
+# Invasive Species Without Photos
+
+OutputFeatureN = os.path.join(basePath, "Invasives_Data_WITHOUT_Photos", "Invasives_Without_Photos.shp")
+cur = arcpy.InsertCursor(OutputFeatureN)
+feat = cur.newRow()
+fields = ['Site', 'Species', 'Other']
+expressionN = arcpy.AddFieldDelimiters(input_shp, 'Other') + "NOT LIKE 'PHOTO'"
+with arcpy.da.InsertCursor(OutputFeatureN, fields, expressionN) as out_cursor:
+    with arcpy.da.SearchCursor(input_shp, fields, expressionN) as in_cursor:
+        for row in in_cursor:
+            cur.insertRow(feat)
+print("Hope this works!")
