@@ -18,4 +18,42 @@
 # The only rule is, you should run your script once, and generate the NVDI for ALL MONTHS provided.
 # As part of your code submission, you should also provide a visualization document
 # (e.g. an ArcMap layout in PDF format), showing the patterns for an area of RI that you find interesting.
+
+import os
+import arcpy
+from arcpy.sa import *
+arcpy.CheckOutExtension("Spatial")
+
+basePath = r"C:\Schoolwork\NRS_528\CC10_Landsat_Data"
+# basePath not connected to GitHub, cuz who wants to commit a ton of 500 mB files?
+arcpy.env.workspace = basePath
+arcpy.env.overwriteOutput = True
+# raster_list = []
+
+# for folder in basePath:
+#     for raster in arcpy.ListRasters('*B4'):
+#         raster_list.append(raster)
+# print(raster_list)
 #
+# ^^^^ Not sure what I'm actually supposed to do here ^^^^
+# Maybe it'll make more sense if I can get the raster calculator tool going.
+
+#######
+# Sourced code from https://pro.arcgis.com/en/pro-app/latest/arcpy/spatial-analyst/raster-calculator.htm
+#   and tried to make it work with the Python snippet copied from the tool in ArcPro
+
+with arcpy.EnvManager(scratchWorkspace=basePath):
+    in_raster1 = "LC08_L1TP_012031_20150201_20170301_01_T1_B5.tif"
+    in_raster2 = "LC08_L1TP_012031_20150201_20170301_01_T1_B4.tif"
+    outRaster = arcpy.ia.RasterCalculator(
+        expression=((int(in_raster1)) - (int(in_raster2)) / (int(in_raster1)) + (int(in_raster2))
+    outRaster.save(os.path.join(basePath, "Test.tif"))
+
+
+# Original Python snippet copied from ArcPro: save this if you mess up with editing the code
+
+# with arcpy.EnvManager(scratchWorkspace=r"c:\users\ektic\onedrive\documents\arcgis\projects\myproject1\myproject1.gdb"):
+#     output_raster = arcpy.ia.RasterCalculator(
+#         expression='("LC08_L1TP_012031_20150201_20170301_01_T1_B5.tif" - "LC08_L1TP_012031_20150201_20170301_01_T1_B4.tif") / ( "LC08_L1TP_012031_20150201_20170301_01_T1_B5.tif" +  "LC08_L1TP_012031_20150201_20170301_01_T1_B4.tif")'
+#     )
+#     output_raster.save(r"c:\users\ektic\onedrive\documents\arcgis\projects\myproject1\myproject1.gdb\nirvis_raste")

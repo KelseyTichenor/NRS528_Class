@@ -6,7 +6,7 @@
 # Raster processing in arcpy is very similar to working with shapefiles and other feature classes. In this example, we
 # conduct some zonal statistics and undertake point value extraction from a raster.
 
-# Using Step_1_Data.zip, extract teh zonal values for the shapefile: Biogeography_Made_Up.shp, and the sst_mean.tif
+# Using Step_1_Data.zip, extract the zonal values for the shapefile: Biogeography_Made_Up.shp, and the sst_mean.tif
 # raster.
 import arcpy
 arcpy.CheckOutExtension("Spatial")
