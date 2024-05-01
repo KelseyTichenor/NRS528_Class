@@ -28,32 +28,48 @@ basePath = r"C:\Schoolwork\NRS_528\CC10_Landsat_Data"
 # basePath not connected to GitHub, cuz who wants to commit a ton of 500 mB files?
 arcpy.env.workspace = basePath
 arcpy.env.overwriteOutput = True
-# raster_list = []
 
-# for folder in basePath:
-#     for raster in arcpy.ListRasters('*B4'):
-#         raster_list.append(raster)
-# print(raster_list)
-#
-# ^^^^ Not sure what I'm actually supposed to do here ^^^^
-# Maybe it'll make more sense if I can get the raster calculator tool going.
+# Per AD - First scan your basePath for the subfolders (Thanks for this!)
 
-#######
-# Sourced code from https://pro.arcgis.com/en/pro-app/latest/arcpy/spatial-analyst/raster-calculator.htm
-#   and tried to make it work with the Python snippet copied from the tool in ArcPro
+raster_directories = os.listdir(basePath)  # Remember from earlier in the semester - lists contents of directories :)
 
-with arcpy.EnvManager(scratchWorkspace=basePath):
-    in_raster1 = "LC08_L1TP_012031_20150201_20170301_01_T1_B5.tif"
-    in_raster2 = "LC08_L1TP_012031_20150201_20170301_01_T1_B4.tif"
-    outRaster = arcpy.ia.RasterCalculator(
-        expression=((int(in_raster1)) - (int(in_raster2)) / (int(in_raster1)) + (int(in_raster2))
-    outRaster.save(os.path.join(basePath, "Test.tif"))
+for directory in raster_directories:
+    directory_workspace = os.path.join(basePath, directory)  # Lets you iterate through all directories in the basePath
+    arcpy.env.workspace = directory_workspace  # Sets the workspace for just within this loop
+    arcpy.env.scratchWorkspace = directory_workspace
+    # Per AD - Here's how I would find B4 and B5 file, listrasters returns a list, hence [0], I am assuming
+    # only one file called b4 in there. Same goes for b5.
+    raster_b4 = arcpy.Raster(arcpy.ListRasters("*b4*")[0])
+    raster_b5 = arcpy.Raster(arcpy.ListRasters("*b5*")[0])
+    # Ah, I see two asterisks are needed when using them as a wildcard function. Noted.
 
+    # This is probably gonna work, but let's do some print statements to see what this *should* look like.
+    print(raster_b4)
+    print(raster_b5)
 
-# Original Python snippet copied from ArcPro: save this if you mess up with editing the code
+    # Success!
+    # Per AD - by converting b4/b5 to an arcpy.Raster object, I can do math on it, without using rastercalculator.
+    #          (Thank God - that tool WAS finicky!)
+    # Would be good to remember that raster_b4 and raster_b5 are only defined within this 'for' loop.
+    # That means that any math that needs to be done has to be done within this loop as well, like this:
 
-# with arcpy.EnvManager(scratchWorkspace=r"c:\users\ektic\onedrive\documents\arcgis\projects\myproject1\myproject1.gdb"):
-#     output_raster = arcpy.ia.RasterCalculator(
-#         expression='("LC08_L1TP_012031_20150201_20170301_01_T1_B5.tif" - "LC08_L1TP_012031_20150201_20170301_01_T1_B4.tif") / ( "LC08_L1TP_012031_20150201_20170301_01_T1_B5.tif" +  "LC08_L1TP_012031_20150201_20170301_01_T1_B4.tif")'
-#     )
-#     output_raster.save(r"c:\users\ektic\onedrive\documents\arcgis\projects\myproject1\myproject1.gdb\nirvis_raste")
+    nvdi = (raster_b5 - raster_b4) / (raster_b5 + raster_b4)  # Wow this is way easier than I was imagining it would be!
+    nvdi_raster = arcpy.Raster(nvdi)
+    print(nvdi_raster)
+
+    # Printing these gave me a bunch of files that look similar to this:
+    # "C:\Users\ektic\AppData\Local\Temp\x62a2cf7b_e977_4794_9ae5_2d89035da382y0.afr"
+    # I wonder what these do? - UPDATE: They're temporary files that go with the .tif file that gets saved
+    #       as part of .save
+    nvdi_raster.save(f'ndvi_raster_' + directory + '.tif')
+
+    if arcpy.Exists(f'ndvi_raster_' + directory + '.tif'):
+        print("NDVI rasters created successfully!")
+
+# Confirmed in the directories that the .tif files have been created, and they visualize in ArcPro beautifully.
+# Per Wikipedia: NDVI's will be values between -1 and 1.
+# 1 indicates healthy vegetation, and 0 indicates no vegetation.
+# Values between 0 and 1 indicate varying degrees of vegetation.
+# Anything less than 0 indicates a lack of dry land.
+# A value of -1 is straight up ocean.
+# Holy crap, you're a lifesaver Andy, thanks for the help!
