@@ -19,7 +19,7 @@
 import os
 import arcpy
 
-basePath = r'C:\GitHub\NRS528_Class\NRS_528_Coding_Challenge_9\CC9_Data'
+basePath = r'H:\NRS528_2024\Kelsey_Tichenor\NRS_528_Coding_Challenge_9\CC9_Data'
 input_shp = os.path.join(basePath, 'RI_Forest_Health_Works_Project%3A_Points_All_Invasives.shp')
 fields = ['Site', 'Species', 'Other']
 unique_species = []
