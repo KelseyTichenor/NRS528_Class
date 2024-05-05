@@ -15,6 +15,16 @@
 ### Tool, Tool1, Tool2 etc, just extend the self.tools = [Tool, Tool1, Tool2] and add the corresponding
 ### classes for the new tools.
 
+# Other Note:
+### 80% of the problems that arise from creating a python toolbox will arise from changing something you shouldn't have.
+### because the code you're about to work with is VERY RIGID and you can't play with the fields in here.
+### You can delete and change the green stuff, but nothing else.
+### Everything must appear in this tool, even if you're not going to use it.
+### No more sys.argv here!
+### Python toolbox extension: .pyt (tells ArcGIS that it's a Python Toolbox file)
+### Remember, don't touch ArcGIS when making a Python toolbox.
+### Step 2 is basically just here to show you the structure of the code and how it works.
+### We'll be getting more hands on with this crap in Step 3.
 
 import arcpy
 
