@@ -37,16 +37,16 @@
 import os
 import arcpy
 
-Base_Path = "C:/GitHub/NRS528_Class/Final_Toolbox_Challenge/KT_Final_Data_And_Models"
-arcpy.env.workspace = Base_Path
+basePath = "C:/GitHub/NRS528_Class/Final_Toolbox_Challenge/KT_Final_Data_And_Models"
+arcpy.env.workspace = basePath
 keep_temp_files = False
 arcpy.env.overwriteOutput = True
 
-Rivers = os.path.join(Base_Path, "Rivers", "Rivers.shp")
-towns = os.path.join(Base_Path, "Towns", "Towns.shp")
+Rivers = os.path.join(basePath, "Rivers", "Rivers.shp")
+towns = os.path.join(basePath, "Towns", "Towns.shp")
 
-if not os.path.exists(os.path.join(Base_Path, "Temporary_Files")):
-    os.mkdir(os.path.join(Base_Path, "Temporary_Files"))
+if not os.path.exists(os.path.join(basePath, "Temporary_Files")):
+    os.mkdir(os.path.join(basePath, "Temporary_Files"))
     print("Temporary files folder created")
 else:
     print("Temporary Files Folder already there")
@@ -72,29 +72,33 @@ class Select(object):
     def getParameterInfo(self):
         """Define parameter definitions"""
         params = []
-        input_line = arcpy.Parameter(name="input_line",
-                                     displayName="Input Line",
-                                     datatype="DEFeatureClass",
-                                     parameterType="Required",  # Required|Optional|Derived
-                                     direction="Input",  # Input|Output
-                                     )
-        input_line.value = r"C:\Course_ArcGIS_Python\Classes\11_Toolboxes\Step_2_Data\URI_Campus_Roads_OSM.shp"  # This is a default value that can be over-ridden in the toolbox
-        params.append(input_line)
-        input_polygon = arcpy.Parameter(name="input_polygon",
-                                        displayName="Input Polygon",
-                                        datatype="DEFeatureClass",
-                                        parameterType="Required",  # Required|Optional|Derived
-                                        direction="Input",  # Input|Output
-                                        )
-        input_polygon.value = r"C:\Course_ArcGIS_Python\Classes\11_Toolboxes\Step_2_Data\URI_Campus_Buildings_OSM.shp"  # This is a default value that can be over-ridden in the toolbox
-        params.append(input_polygon)
+        input_shp = arcpy.Parameter(name="input_features",
+                                          displayName="Input Features",
+                                          datatype="DEFeatureClass",
+                                          parameterType="Required",  # Required|Optional|Derived
+                                          direction="Input",  # Input|Output
+                                         )
+        input_shp.value = towns  # This is a default value that can be over-ridden in the toolbox
+        params.append(input_shp)
+
         output = arcpy.Parameter(name="output",
                                  displayName="Output",
                                  datatype="DEFeatureClass",
                                  parameterType="Required",  # Required|Optional|Derived
                                  direction="Output",  # Input|Output
                                  )
-        output.value = r"C:\Course_ArcGIS_Python\Classes\11_Toolboxes\Step_2_Data\Output.shp"  # This is a default value that can be over-ridden in the toolbox
+        output.value = os.path.join(basePath, "Richmond_Select.shp")  # This is a default value that can be over-ridden in the toolbox
+        params.append(output)
+
+        where_clause = arcpy.Parameter(name="Where_Clause",
+                                       displayName="Where Clause",
+                                       datatype="GPSQLExpression",
+                                       parameterType="Optional",  # Required|Optional|Derived
+                                       direction="Input",  # Input|Output
+                                     )
+        where_clause.parameterDependencies = [input_shp.name]
+        where_clause.value = os.path.join(basePath,
+                                    "Richmond_Select.shp")  # This is a default value that can be over-ridden in the toolbox
         params.append(output)
         return params
 
@@ -115,14 +119,13 @@ class Select(object):
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
-        input_line = parameters[0].valueAsText
-        input_polygon = parameters[1].valueAsText
-        output = parameters[2].valueAsText
+        input_shp = parameters[0].valueAsText
+        output = parameters[1].valueAsText
+        where_clause = parameters[2].valueAsText
 
-        arcpy.Clip_analysis(in_features=input_line,
-                            clip_features=input_polygon,
-                            out_feature_class=output,
-                            cluster_tolerance="")
+        arcpy.analysis.Select(in_features=input_shp,
+                              out_feature_class=output,
+                              where_clause=where_clause)
         return
 
 #
@@ -193,7 +196,7 @@ class Select(object):
 # class Buffer(object):
 #     def __init__(self):
 #         """Define the tool (tool name is the name of the class)."""
-#         self.label = "Clippy Tool"
+#         self.label = "Buffer Tool"
 #         self.description = ""
 #         self.canRunInBackground = False
 #
@@ -255,9 +258,9 @@ class Select(object):
 
 # This cheat code block allows you to run your code in a test-mode within PyCharm,
 # i.e. you do not have to open the tool in ArcMap. This works best for a "single tool" within the Toolbox.
-# def main():
-#     tool = Clippy()
-#     tool.execute(tool.getParameterInfo(), None)
-#
-# if __name__ == '__main__':
-#     main()
+def main():
+    tool = Select()
+    tool.execute(tool.getParameterInfo(), None)
+
+if __name__ == '__main__':
+    main()
