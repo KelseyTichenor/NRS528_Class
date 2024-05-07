@@ -7,6 +7,7 @@
 * Although this is labeled Coding Challenge 2, this is really the first coding challenge we did that involves Python use. 
 * (Coding Challenge 1 was the README you saw when you first looked at this repo.)
 * In this challenge, we had to accomplish five different tasks:
+
 1. Using this list: **[1, 2, 3, 6, 8, 12, 20, 32, 46, 85]**, we needed to first make a new list that has all the elements less than 5 in it, and second, do the same thing again, just doing it in one line of code using the lambda function.
 2. Using the lists: list_a = **['dog', 'cat', 'rabbit', 'hamster', 'gerbil']** and list_b = **['dog', 'hamster', 'snake']**, we needed to determine which items were present in both lists and which items share no overlap in the lists.
 3. Given a single phrase, we needed to cound the occurrence of each word in this string: **string = 'hi dee hi how are you mr dee'** and print the word count. Doing this involved turning this string into a list using .split.
