@@ -34,8 +34,6 @@
 # Per AD: select tool and SQL queries are dark magic :( - stay away from those and stick to tools that don't require
 #         filtering the data or selecting stuff from drop-down lists: I'm thinking clip, erase, and count overlapping
 #         features? Everything else looks like some harpy witch magic I have no idea how to access.
-# There are hard coded file paths in here, but they're safely commented out and won't bite. Much.
-# (Not that the final code was bugged with them in there, but why take the chance?)
 
 import arcpy
 
@@ -49,7 +47,7 @@ class Toolbox(object):
         # List of tool classes associated with this toolbox
         self.tools = [Clippy, MrCleanMagicEraser, CountOverlap]
 
-
+# starting code block for the Clip tool:
 class Clippy(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
@@ -66,8 +64,7 @@ class Clippy(object):
                                      parameterType="Required",  # Required|Optional|Derived
                                      direction="Input",  # Input|Output
                                      )
-        # inFeature.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Leaking_Underground_Storage_Tanks\Leaking_Underground_Storage_Tanks.shp"
-              # This is a default value that can be over-ridden in the toolbox
+
         params.append(inFeature)
         clipFeature = arcpy.Parameter(name="input_polygon",
                                         displayName="Insert Clip Data Here",
@@ -75,7 +72,6 @@ class Clippy(object):
                                         parameterType="Required",  # Required|Optional|Derived
                                         direction="Input",  # Input|Output
                                         )
-        # clipFeature.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Wetlands_2020\Wetlands_2020.shp"  # This is a default value that can be over-ridden in the toolbox
         params.append(clipFeature)
         output = arcpy.Parameter(name="Output",
                                  displayName="What should we name the output?",
@@ -83,7 +79,6 @@ class Clippy(object):
                                  parameterType="Required",  # Required|Optional|Derived
                                  direction="Output",  # Input|Output
                                  )
-        # output.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Clip_Test.shp"  # This is a default value that can be over-ridden in the toolbox
         params.append(output)
         return params
 
@@ -114,7 +109,7 @@ class Clippy(object):
                             cluster_tolerance="")
         return
 
-
+# Starting code block for the Erase tool:
 class MrCleanMagicEraser(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
@@ -131,8 +126,6 @@ class MrCleanMagicEraser(object):
                                     parameterType="Required",  # Required|Optional|Derived
                                     direction="Input",  # Input|Output
                                     )
-        # inFeature2.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Leaking_Underground_Storage_Tanks\Leaking_Underground_Storage_Tanks.shp"
-        # This is a default value that can be over-ridden in the toolbox
         params.append(inFeature2)
         eraseFeature = arcpy.Parameter(name="input_polygon",
                                       displayName="Insert Erase Data Here",
@@ -140,7 +133,6 @@ class MrCleanMagicEraser(object):
                                       parameterType="Required",  # Required|Optional|Derived
                                       direction="Input",  # Input|Output
                                       )
-        # eraseFeature.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Wetlands_2020\Wetlands_2020.shp"  # This is a default value that can be over-ridden in the toolbox
         params.append(eraseFeature)
         output = arcpy.Parameter(name="Output",
                                  displayName="What should we name the output?",
@@ -148,7 +140,6 @@ class MrCleanMagicEraser(object):
                                  parameterType="Required",  # Required|Optional|Derived
                                  direction="Output",  # Input|Output
                                  )
-        # output.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Clip_Test.shp"  # This is a default value that can be over-ridden in the toolbox
         params.append(output)
         return params
 
@@ -179,7 +170,7 @@ class MrCleanMagicEraser(object):
                             cluster_tolerance="")
         return
 
-
+# Starting code block for the Count Overlapping Features tool:
 class CountOverlap(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
@@ -196,8 +187,6 @@ class CountOverlap(object):
                                      parameterType="Required",  # Required|Optional|Derived
                                      direction="Input",  # Input|Output
                                      )
-        # inFeature3.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Leaking_Underground_Storage_Tanks\Leaking_Underground_Storage_Tanks.shp"
-              # This is a default value that can be over-ridden in the toolbox
         params.append(inFeature3)
         output3 = arcpy.Parameter(name="Output",
                                  displayName="What should we name the output?",
@@ -205,7 +194,6 @@ class CountOverlap(object):
                                  parameterType="Required",  # Required|Optional|Derived
                                  direction="Output",  # Input|Output
                                  )
-        # output3.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Clip_Test.shp"  # This is a default value that can be over-ridden in the toolbox
         params.append(output3)
         return params
 
@@ -236,6 +224,8 @@ class CountOverlap(object):
                                                 )
         return
 
+# The code blocks above are largely unchanged.
+# I sourced the parameters for each tool (aside from Clip, which we went over in class) from Esri's tool documentation.
 
 # This cheat code block allows you to run your code in a test-mode within PyCharm,
 # i.e. you do not have to open the tool in ArcMap. This works best for a "single tool" within the Toolbox.
