@@ -34,6 +34,8 @@
 # Per AD: select tool and SQL queries are dark magic :( - stay away from those and stick to tools that don't require
 #         filtering the data or selecting stuff from drop-down lists: I'm thinking clip, erase, and count overlapping
 #         features? Everything else looks like some harpy witch magic I have no idea how to access.
+# There are hard coded file paths in here, but they're safely commented out and won't bite. Much.
+# (Not that the final code was bugged with them in there, but why take the chance?)
 
 import arcpy
 
@@ -64,7 +66,7 @@ class Clippy(object):
                                      parameterType="Required",  # Required|Optional|Derived
                                      direction="Input",  # Input|Output
                                      )
-        inFeature.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Leaking_Underground_Storage_Tanks\Leaking_Underground_Storage_Tanks.shp"
+        # inFeature.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Leaking_Underground_Storage_Tanks\Leaking_Underground_Storage_Tanks.shp"
               # This is a default value that can be over-ridden in the toolbox
         params.append(inFeature)
         clipFeature = arcpy.Parameter(name="input_polygon",
@@ -73,7 +75,7 @@ class Clippy(object):
                                         parameterType="Required",  # Required|Optional|Derived
                                         direction="Input",  # Input|Output
                                         )
-        clipFeature.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Wetlands_2020\Wetlands_2020.shp"  # This is a default value that can be over-ridden in the toolbox
+        # clipFeature.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Wetlands_2020\Wetlands_2020.shp"  # This is a default value that can be over-ridden in the toolbox
         params.append(clipFeature)
         output = arcpy.Parameter(name="Output",
                                  displayName="What should we name the output?",
@@ -81,7 +83,7 @@ class Clippy(object):
                                  parameterType="Required",  # Required|Optional|Derived
                                  direction="Output",  # Input|Output
                                  )
-        output.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Clip_Test.shp"  # This is a default value that can be over-ridden in the toolbox
+        # output.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Clip_Test.shp"  # This is a default value that can be over-ridden in the toolbox
         params.append(output)
         return params
 
@@ -129,7 +131,7 @@ class MrCleanMagicEraser(object):
                                     parameterType="Required",  # Required|Optional|Derived
                                     direction="Input",  # Input|Output
                                     )
-        inFeature2.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Leaking_Underground_Storage_Tanks\Leaking_Underground_Storage_Tanks.shp"
+        # inFeature2.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Leaking_Underground_Storage_Tanks\Leaking_Underground_Storage_Tanks.shp"
         # This is a default value that can be over-ridden in the toolbox
         params.append(inFeature2)
         eraseFeature = arcpy.Parameter(name="input_polygon",
@@ -138,7 +140,7 @@ class MrCleanMagicEraser(object):
                                       parameterType="Required",  # Required|Optional|Derived
                                       direction="Input",  # Input|Output
                                       )
-        eraseFeature.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Wetlands_2020\Wetlands_2020.shp"  # This is a default value that can be over-ridden in the toolbox
+        # eraseFeature.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Wetlands_2020\Wetlands_2020.shp"  # This is a default value that can be over-ridden in the toolbox
         params.append(eraseFeature)
         output = arcpy.Parameter(name="Output",
                                  displayName="What should we name the output?",
@@ -146,7 +148,7 @@ class MrCleanMagicEraser(object):
                                  parameterType="Required",  # Required|Optional|Derived
                                  direction="Output",  # Input|Output
                                  )
-        output.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Clip_Test.shp"  # This is a default value that can be over-ridden in the toolbox
+        # output.value = r"C:\GitHub\NRS528_Class\Final_Toolbox_Challenge\Final_Toolbox_Data\Clip_Test.shp"  # This is a default value that can be over-ridden in the toolbox
         params.append(output)
         return params
 
@@ -234,8 +236,11 @@ class CountOverlap(object):
                                                 )
         return
 
+
 # This cheat code block allows you to run your code in a test-mode within PyCharm,
 # i.e. you do not have to open the tool in ArcMap. This works best for a "single tool" within the Toolbox.
+# You just have to delete this or comment it out before trying to import the toolbox into ArcPro.
+
 # def main():
 #     tool = Clippy()
 #     tool.execute(tool.getParameterInfo(), None)
