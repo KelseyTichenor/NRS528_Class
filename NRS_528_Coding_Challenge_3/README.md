@@ -9,15 +9,9 @@
 
 1. We needed to take this tree of directories and subdirectories:
 
-├── draft_code
-|   ├── pending
-|   └── complete
-├── includes
-├── layouts
-|   ├── default
-|   └── post
-|       └── posted
-└── site
+<p align="center">
+  <img height="300" src="https://github.com/KelseyTichenor/NRS528_Class/blob/main/Images/CC3_Directory.jpg?raw=true">
+</p>
 
 replicate the tree using os.system or os.mkdirs, then delete it without deleting our entire hard drive.
 * No hard drives were harmed in the completion of this task.
