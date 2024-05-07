@@ -13,3 +13,4 @@
 * The model was designed to identify riparian zones in Richmond, RI.
 * The resulting Python code was designed to select Richmond out of the RI Towns dataset, clip the RI rivers dataset to the RI Towns dataset, then buffer the rivers in the clipped towns/rivers layer.
 * This was honestly fun to put together, and it felt great to know that it actually worked!
+* To keep the code path-agnostic, I made prodigious use of my new favorite command, os.path.join to link relative filepaths to a predefined base path.
