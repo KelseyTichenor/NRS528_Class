@@ -21,7 +21,7 @@ Three arguments needed to be used, the file needed to do something simple in 15 
 
 3. Using the following dataset: [Mauna Loa, Hawaii dataset](https://github.com/datasets/co2-ppm-daily/tree/master/data/)
 we needed to use Python to calculate the following:
-⋅⋅* Annual average for each year in the dataset.
-⋅⋅* Minimum, maximum and average for the entire dataset.
-⋅⋅* Seasonal average if Spring (March, April, May), Summer (June, July, August), Autumn (September, October, November) and Winter (December, January, February).
-⋅⋅* Calculate the anomaly for each value in the dataset relative to the mean for the entire time series.
+* Annual average for each year in the dataset.
+* Minimum, maximum and average for the entire dataset.
+* Seasonal average if Spring (March, April, May), Summer (June, July, August), Autumn (September, October, November) and Winter (December, January, February).
+* Calculate the anomaly for each value in the dataset relative to the mean for the entire time series.
